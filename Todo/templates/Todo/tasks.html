@@ -1,0 +1,39 @@
+{% extends "Todo/layout.html" %}
+
+{% block body %}
+
+<div id="search">
+    <nav id="searchbar"class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <form class="d-flex">
+              {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+</div>
+
+<div id="tasks">
+    <ul>
+        {% for task in tasks %}
+        <li class="taskli">{{ task }}
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </li>
+        {% empty %}
+        <li>No Tasks. Enjoy!</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div id="addform">
+    <form action="">
+        {% csrf_token %}
+        <div class="addinput">
+            {{form}}
+        </div>
+        <input type="submit" value="Add!">
+    </form>
+</div>
+
+{% endblock %}
