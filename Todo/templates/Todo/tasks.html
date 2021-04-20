@@ -14,14 +14,12 @@
       </nav>
 </div>
 
-<div id="tasks">
-    <ul>
+<div id="tasks" >
+    <ul data-delete_url = "{% url 'Todo:deletetask' %}">
         {% for task in tasks %}
         <li class="taskli">{{ task }}
             <i class="fa fa-trash" aria-hidden="true"></i>
         </li>
-        {% empty %}
-        <li>No Tasks. Enjoy!</li>
         {% endfor %}
     </ul>
 </div>

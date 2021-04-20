@@ -31,6 +31,7 @@ li{
     color: #fff;
     border-radius: 50px;
     margin: 10px;
+    width: 100%;
 }
 
 @media screen and (max-width: 410px){
@@ -46,6 +47,12 @@ li{
 .fa-trash{
     position: absolute;
     right: 25px;
+    cursor:pointer;
+}
+
+.fa-trash:hover{
+    color: rgb(0, 132, 255);
+
 }
 
 #ad{
@@ -83,3 +90,33 @@ button[type="submit"]{
     color: #fff;
     border-color: #fff;
 }
+
+@keyframes add-task-animation {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+.animateAdd{
+    animation: add-task-animation 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes remove-task-animation{
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0%;
+        display: none;
+    }
+}
+
+.animateRemove{
+    animation: remove-task-animation 1s;
+    animation-fill-mode: forwards;
+}
+

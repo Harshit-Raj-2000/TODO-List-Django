@@ -8,7 +8,7 @@ class new_task_form(forms.Form):
 
 # Create your views here.
 
-tasks = ['foo', 'bar', 'baz', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur eligendi reprehenderit cum corrupti. Eligendi placeat voluptate illo alias fugiat ullam, dolorum cupiditate voluptatum sit consequatur, iure a facilis molestiae ab!']
+tasks = []
 
 def index(request):
     return render(request, "Todo/tasks.html",{
@@ -30,5 +30,14 @@ def add_task(request):
         return JsonResponse(data,status=200)
     else:
         return HttpResponse(status=200)
+
+def delete_task(request):
+    if request.method == "POST":
+        request_data = json.loads(request.body)
+        index_li = request_data.get('index')
+        del tasks[index_li]
+        return HttpResponse(status=200)
+    else:
+        return HttpResponse(status=500)
 
         
