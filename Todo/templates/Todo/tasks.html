@@ -26,8 +26,8 @@
     </ul>
 </div>
 
-<div id="addform">
-    <form action="">
+<div id="ad">
+    <form class="addform"  data-task_url = "{% url 'Todo:addtask' %}">
         {% csrf_token %}
         <div class="addinput">
             {{form}}

@@ -3,5 +3,6 @@ from . import views
 
 app_name = "Todo"
 urlpatterns =[
-    path("", views.index, name="index")
+    path("", views.index, name="index"),
+    path("addtask", views.add_task, name="addtask")
 ]
