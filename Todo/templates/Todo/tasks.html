@@ -2,13 +2,11 @@
 
 {% block body %}
 
-<div id="search">
+<div id="search" data-search_url = "{% url 'Todo:searchtask' %}">
     <nav id="searchbar"class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <form class="d-flex">
-              {% csrf_token %}
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
       </nav>

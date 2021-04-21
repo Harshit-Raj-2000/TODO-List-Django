@@ -71,4 +71,46 @@ function deleteTask(e){
     xhr.send(data)
 }
 
+document.querySelector('.me-2').onkeyup = (e) =>{
+
+    url = document.querySelector('#search').dataset.search_url
+
+    var xhr = new XMLHttpRequest()
+
+    xhr.open('POST', url, true)
+    xhr.setRequestHeader('content-type','application/json')
+    xhr.setRequestHeader('X-CSRFToken', document.querySelector('input[name="csrfmiddlewaretoken"]').value)
+
+    data = JSON.stringify({
+        search_value : e.target.value
+    })
+
+    xhr.onload = function(){
+        if(this.status == 200){
+            r = JSON.parse(this.responseText)
+            index_arr = r.index_arr
+            li_arr = document.querySelector('ul').children
+            // go over li_Arr, turning elements not at index positions to display: none
+
+            for(i=0; i<li_arr.length; i++){
+                if(index_arr.includes(i)){
+                    li_arr[i].style.display = 'block';
+                }
+                else{
+                    li_arr[i].style.display = 'none';
+                }
+            }
+        }
+        else{
+            console.log("Some error occured....")
+        }
+    }
+
+    xhr.send(data)
+
+    
+}
+
+//for search, ajax request should return an array of positions whichstisfy the typed word,
+// for each li, if it is at the positions returned,display: block, else display: none
 

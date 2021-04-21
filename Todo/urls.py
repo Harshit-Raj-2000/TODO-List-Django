@@ -6,4 +6,5 @@ urlpatterns =[
     path("", views.index, name="index"),
     path("addtask", views.add_task, name="addtask"),
     path("deletetask", views.delete_task, name="deletetask"),
+    path("search", views.search_task, name="searchtask")
 ]
